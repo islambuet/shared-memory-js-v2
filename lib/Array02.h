@@ -12,7 +12,7 @@ struct StructureArray02
     unsigned int ulong_Mode;
     unsigned int ulong_State;
     unsigned int ulong_CMStatus;
-    unsigned int ulong_OupputState[40];
+    unsigned int ulong_OutputState[40];
 };
 
 StructureArray02 getArray02() {
@@ -24,14 +24,14 @@ StructureArray02 getArray02() {
     dataArray02.ulong_State = 2;
     dataArray02.ulong_CMStatus = 3;
     
-    unsigned int temp_ulong_OupputState[40] = {
+    unsigned int temp_ulong_OutputState[40] = {
         50, 48, 50, 49, 45, 48, 56, 45,
         50, 51, 84, 48, 50, 58, 49, 56,
         58, 50, 51, 46, 54, 54, 48, 90,
         50, 51, 84, 48, 50, 58, 49, 56,
         50, 51, 84, 48, 50, 58, 49, 56
     };
-    memcpy(dataArray02.ulong_OupputState, temp_ulong_OupputState, sizeof(unsigned int) * 40);
+    memcpy(dataArray02.ulong_OutputState, temp_ulong_OutputState, sizeof(unsigned int) * 40);
     
     return dataArray02;
 }
@@ -42,9 +42,9 @@ ostream& operator<<(ostream& os, const StructureArray02 da) {
     os << " ulong_State: " << da.ulong_State << endl;
     os << " ulong_CMStatus: " << da.ulong_CMStatus << endl;
 
-    os << " ulong_OupputState: ";
+    os << " ulong_OutputState: ";
     for (int i = 0; i < 40; i++)
-        printf("%d ", da.ulong_OupputState[i]);
+        printf("%d ", da.ulong_OutputState[i]);
     os << endl;
 
     os << "}" << endl;
@@ -58,7 +58,7 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"ulong_State").ToLocalChecked(),Number::New(isolate, array02.ulong_State));
     obj->Set(context,String::NewFromUtf8(isolate,"ulong_CMStatus").ToLocalChecked(),Number::New(isolate, array02.ulong_CMStatus));    
 
-    Local<Array> ulong_OupputState=Array::New(isolate,40);for(int i=0;i<40;i++){ulong_OupputState->Set(context,i, Integer::New(isolate,array02.ulong_OupputState[i]));}obj->Set(context,String::NewFromUtf8(isolate,"ulong_OupputState").ToLocalChecked(),ulong_OupputState);
+    Local<Array> ulong_OutputState=Array::New(isolate,40);for(int i=0;i<40;i++){ulong_OutputState->Set(context,i, Integer::New(isolate,array02.ulong_OutputState[i]));}obj->Set(context,String::NewFromUtf8(isolate,"ulong_OutputState").ToLocalChecked(),ulong_OutputState);
     
     return obj;
 }
