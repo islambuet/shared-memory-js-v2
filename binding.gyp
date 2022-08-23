@@ -1,9 +1,9 @@
 {
   "targets": [
     {
-      "target_name": "SharedMemory",      
+      "target_name": "shared_memory",      
       "sources": [
-        "lib/SharedMemory.cc",        
+        "lib/shared_memory.cc",        
       ]
     }
   ]
